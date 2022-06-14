@@ -5,13 +5,13 @@
 class Epinio < Formula
   desc "CLI for Epinio, the Application Development Engine for Kubernetes"
   homepage "https://epinio.io/"
-  version "0.8.0"
+  version "0.9.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/epinio/epinio/releases/download/v0.8.0/epinio-darwin-arm64"
-      sha256 "da9e2ab1d5e117a20b68dcb0aa1e2c62affba08dbebe451011e3cf5d1e6a4adb"
+      url "https://github.com/epinio/epinio/releases/download/v0.9.0/epinio-darwin-arm64"
+      sha256 "26c6e0b5c2b55d9476865976e8eb0a269ebe1b9b272094e27d58e4863703bcfe"
 
       def install
         bin.install "epinio-darwin-arm64" => "epinio"
@@ -20,20 +20,20 @@ class Epinio < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v0.8.0/epinio-linux-x86_64"
-      sha256 "0b6e3dd97e8e5f4d911fa2336dab405174fd5a76f21f9b59201662d92bdfba33"
-
-      def install
-        bin.install "epinio-linux-x86_64" => "epinio"
-      end
-    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/epinio/epinio/releases/download/v0.8.0/epinio-linux-arm64"
-      sha256 "96d6ce533ec9ad7990eb2bf78cdb9d249a66383f87b5e3a359464acc3b802581"
+      url "https://github.com/epinio/epinio/releases/download/v0.9.0/epinio-linux-arm64"
+      sha256 "f524fad4537e6c1dcd64074f916c184619c849065e5b56f2e87187b6af9b033f"
 
       def install
         bin.install "epinio-linux-arm64" => "epinio"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/epinio/epinio/releases/download/v0.9.0/epinio-linux-x86_64"
+      sha256 "3f4c399258c070e920faca4a2a29fa608bcfeea5b3ff0e2f46ec61ff3786e499"
+
+      def install
+        bin.install "epinio-linux-x86_64" => "epinio"
       end
     end
   end
@@ -42,7 +42,7 @@ class Epinio < Formula
     output = shell_output("#{bin}/epinio version 2>&1")
     assert_match "Epinio Version: #{version}", output
 
-    output = shell_output("#{bin}/epinio settings update 2>&1")
+    output = shell_output("#{bin}/epinio settings update-ca 2>&1")
     assert_match "failed to get kube config", output
     assert_match "no configuration has been provided", output
   end
