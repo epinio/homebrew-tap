@@ -5,21 +5,21 @@
 class Epinio < Formula
   desc "CLI for Epinio, the Application Development Engine for Kubernetes"
   homepage "https://epinio.io/"
-  version "1.3.0"
+  version "1.4.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.3.0/epinio-darwin-x86_64"
-      sha256 "9b76abffeaec7f1d7974446d21e338c45f360eac2e57bfae82403cc98f94e906"
+      url "https://github.com/epinio/epinio/releases/download/v1.4.0/epinio-darwin-x86_64"
+      sha256 "15cee2d209533deaeded5c5b47395be99fa55b571c5d5c13761e734faeb692c6"
 
       def install
         bin.install "epinio-darwin-x86_64" => "epinio"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/epinio/epinio/releases/download/v1.3.0/epinio-darwin-arm64"
-      sha256 "4041b4174e6227b7f3d9e6cf77166990ae4afadb58136dc0ffb2db66576c9817"
+      url "https://github.com/epinio/epinio/releases/download/v1.4.0/epinio-darwin-arm64"
+      sha256 "3f93d115b16dd2c5a4bb3641476cdb55bc257409c4860a6472ed8cf3f8af1b63"
 
       def install
         bin.install "epinio-darwin-arm64" => "epinio"
@@ -28,20 +28,20 @@ class Epinio < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.3.0/epinio-linux-x86_64"
-      sha256 "618045ead8be88f9cc3bbd9aa768382a4e41bec2c31fc4b1e021cc362a14bac0"
-
-      def install
-        bin.install "epinio-linux-x86_64" => "epinio"
-      end
-    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/epinio/epinio/releases/download/v1.3.0/epinio-linux-arm64"
-      sha256 "be4e14442c22d5ba6e40c1aeb46285ded9563b3772fb8eb3583d5662e79161a0"
+      url "https://github.com/epinio/epinio/releases/download/v1.4.0/epinio-linux-arm64"
+      sha256 "ae601328a6444da226fe58db8c8db56b3575dc0c59c172013b7cca0cb5e30aa0"
 
       def install
         bin.install "epinio-linux-arm64" => "epinio"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/epinio/epinio/releases/download/v1.4.0/epinio-linux-x86_64"
+      sha256 "a9720c8a86e514628d099cf680d94387e938c1b149b87dca9bced4c7d01c2c7d"
+
+      def install
+        bin.install "epinio-linux-x86_64" => "epinio"
       end
     end
   end
