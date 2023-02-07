@@ -5,21 +5,21 @@
 class Epinio < Formula
   desc "CLI for Epinio, the Application Development Engine for Kubernetes"
   homepage "https://epinio.io/"
-  version "1.6.1"
+  version "1.6.2"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/archive/refs/tags/v1.6.1.tar.gz"
-      sha256 "8b07801efe93fc7eb8241dd05c57dd8ce1ed3568f88bfedf6340df996543cd2c"
+      url "https://github.com/epinio/epinio/releases/download/v1.6.2/epinio-darwin-x86_64"
+      sha256 "774706d78cc295156098945d7e79e68e36c95e60bb1b44a32b4c4197c61d439a"
 
       def install
         bin.install "epinio-darwin-x86_64" => "epinio"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/epinio/epinio/releases/download/v1.5.2/epinio-darwin-arm64"
-      sha256 "499cf316b30f50d00d468b7ebf41a080d5cac79755990358590d34e74d5afa59"
+      url "https://github.com/epinio/epinio/releases/download/v1.6.2/epinio-darwin-arm64"
+      sha256 "dabeafaf340ab53ce782ec0429ad8fc89939e66d322c85787dd3692c52bc087d"
 
       def install
         bin.install "epinio-darwin-arm64" => "epinio"
@@ -28,20 +28,20 @@ class Epinio < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.5.2/epinio-linux-x86_64"
-      sha256 "3fda0c75668c97558bb89d6f3ecab4ee34f92986116270a919063a024c00e39d"
-
-      def install
-        bin.install "epinio-linux-x86_64" => "epinio"
-      end
-    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/epinio/epinio/releases/download/v1.5.2/epinio-linux-arm64"
-      sha256 "3b3db966214c6e67ce9bdf1ede946dec2c84929dfbe936a32ef8629eeb2bdbc4"
+      url "https://github.com/epinio/epinio/releases/download/v1.6.2/epinio-linux-arm64"
+      sha256 "c03b03f82e6610bbb96a398d0a6dc7a787027426a04c619462ea948a994e739f"
 
       def install
         bin.install "epinio-linux-arm64" => "epinio"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/epinio/epinio/releases/download/v1.6.2/epinio-linux-x86_64"
+      sha256 "0dad8518d3bd3bf2911e4d0d96fe24370e00f775e7c322259ba1497d4fbdbee3"
+
+      def install
+        bin.install "epinio-linux-x86_64" => "epinio"
       end
     end
   end
@@ -49,7 +49,6 @@ class Epinio < Formula
   test do
     output = shell_output("#{bin}/epinio version 2>&1")
     assert_match "Epinio Version: #{version}", output
-
     output = shell_output("#{bin}/epinio settings update-ca 2>&1")
     assert_match "failed to get kube config", output
     assert_match "no configuration has been provided", output
