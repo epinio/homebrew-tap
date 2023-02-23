@@ -9,14 +9,6 @@ class Epinio < Formula
   license "Apache-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/epinio/epinio/releases/download/v1.7.0/epinio-darwin-arm64"
-      sha256 "e167b4a4ddf2dfcb19892eb145f117ff381b6ee53d10232e4adad1777adaa454"
-
-      def install
-        bin.install "epinio-darwin-arm64" => "epinio"
-      end
-    end
     if Hardware::CPU.intel?
       url "https://github.com/epinio/epinio/releases/download/v1.7.0/epinio-darwin-x86_64"
       sha256 "1cd956c04790f72facb86a6f93eeb2eea5f5672440deead81c31ba3d7e5b2a77"
@@ -25,23 +17,31 @@ class Epinio < Formula
         bin.install "epinio-darwin-x86_64" => "epinio"
       end
     end
+    if Hardware::CPU.arm?
+      url "https://github.com/epinio/epinio/releases/download/v1.7.0/epinio-darwin-arm64"
+      sha256 "e167b4a4ddf2dfcb19892eb145f117ff381b6ee53d10232e4adad1777adaa454"
+
+      def install
+        bin.install "epinio-darwin-arm64" => "epinio"
+      end
+    end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.7.0/epinio-linux-x86_64"
-      sha256 "04be993ea43364a93e2b845171e2e35bc29fc1a2048b04aa797897d7c1963772"
-
-      def install
-        bin.install "epinio-linux-x86_64" => "epinio"
-      end
-    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/epinio/epinio/releases/download/v1.7.0/epinio-linux-arm64"
       sha256 "b7bb17e09f5ab4750915afa4090a1b9a9f4811c5a905251489f1dc6c951afed0"
 
       def install
         bin.install "epinio-linux-arm64" => "epinio"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/epinio/epinio/releases/download/v1.7.0/epinio-linux-x86_64"
+      sha256 "04be993ea43364a93e2b845171e2e35bc29fc1a2048b04aa797897d7c1963772"
+
+      def install
+        bin.install "epinio-linux-x86_64" => "epinio"
       end
     end
   end
