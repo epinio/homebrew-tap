@@ -28,20 +28,20 @@ class Epinio < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/epinio/epinio/releases/download/v1.12.0-rc1/epinio-linux-arm64"
-      sha256 "b07537fc349bc30933e73910f0846c29ee9b20ef4d6301c4475db142a74c06ee"
-
-      def install
-        bin.install "epinio-linux-arm64" => "epinio"
-      end
-    end
     if Hardware::CPU.intel?
       url "https://github.com/epinio/epinio/releases/download/v1.12.0-rc1/epinio-linux-x86_64"
       sha256 "c7993a230adaab39ddfd6f13ed2668b2666043829af7531ac6fd87b5801bae29"
 
       def install
         bin.install "epinio-linux-x86_64" => "epinio"
+      end
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/epinio/epinio/releases/download/v1.12.0-rc1/epinio-linux-arm64"
+      sha256 "b07537fc349bc30933e73910f0846c29ee9b20ef4d6301c4475db142a74c06ee"
+
+      def install
+        bin.install "epinio-linux-arm64" => "epinio"
       end
     end
   end
