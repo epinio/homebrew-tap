@@ -5,21 +5,21 @@
 class Epinio < Formula
   desc "CLI for Epinio, the Application Development Engine for Kubernetes"
   homepage "https://epinio.io/"
-  version "1.14.0-rc3"
+  version "1.14.0-rc4"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc3/epinio-darwin-x86_64"
-      sha256 "6b7d3d05159ba16cd838c79a59833b08cdb40d8079f495aa47bb9919ab213b11"
+      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc4/epinio-darwin-x86_64"
+      sha256 "87f3e1c1b260724a1355856ee2c59f8b4f678b1a55073089e882bc7faf2e4a1e"
 
       def install
         bin.install "epinio-darwin-x86_64" => "epinio"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc3/epinio-darwin-arm64"
-      sha256 "f97243a6b3c87c6407a3086799860de73979f8afd656bc1044cd54d116b9121e"
+      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc4/epinio-darwin-arm64"
+      sha256 "804f42fca8e2a3b18d057a88a4774f22cd68e0b01c015027ebd986899171ecef"
 
       def install
         bin.install "epinio-darwin-arm64" => "epinio"
@@ -29,16 +29,16 @@ class Epinio < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc3/epinio-linux-x86_64"
-      sha256 "f6a7dab58b1584e87e65c84b2c64acffef6a3c9a0da0e4b6781198cc7cc4d713"
+      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc4/epinio-linux-x86_64"
+      sha256 "8c1a7c3d15603ba27195ce2533c6accd5a0024be60ac9240c1824e184b89afb2"
 
       def install
         bin.install "epinio-linux-x86_64" => "epinio"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc3/epinio-linux-arm64"
-      sha256 "6aa78175b7c3516cd43c0ffedc501cc79fe8e72330e0f260e47b028af8b37de0"
+      url "https://github.com/epinio/epinio/releases/download/v1.14.0-rc4/epinio-linux-arm64"
+      sha256 "e66d37b68864eb45d40037330a5d9b5f5744dba7e1f7ba7e7f7818c083816688"
 
       def install
         bin.install "epinio-linux-arm64" => "epinio"
