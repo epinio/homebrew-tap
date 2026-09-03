@@ -5,13 +5,13 @@
 class Epinio < Formula
   desc "CLI for Epinio, the Application Development Engine for Kubernetes"
   homepage "https://epinio.io/"
-  version "1.14.2-rc3"
+  version "1.14.2"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/epinio/epinio/releases/download/v1.14.2-rc3/epinio-darwin-x86_64"
-      sha256 "effb8b91669a2280c7b9faa51acb3c33a9022bfb8a84a1bcc061df165aba4167"
+      url "https://github.com/epinio/epinio/archive/refs/tags/v1.14.2.tar.gz"
+      sha256 "4f290987fe290c4a23f29b1c14b2f7bb703264ae173e1aade0f6550aead06774"
 
       def install
         bin.install "epinio-darwin-x86_64" => "epinio"
